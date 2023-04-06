@@ -81,22 +81,21 @@
 
 .chat-log
 {
-  padding: 24px;
   text-align: left;
-  display: flex;
 }
 
-.chat-message
+.chat-message.chatgpt
+{
+  background-color: #444654
+}
+
+.chat-message-center
 {
   display: flex;
   padding: 12px;
   padding-left: 24px; 
   padding-right: 24px;
-}
-
-.chat-message-center
-{
-  max-width: 480px;
+  max-width: 825px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -105,13 +104,18 @@
 {
   background: white;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
+}
+
+.avatar.chatgpt
+{
+  background-color: #0da37f;
 }
 
 .message
 {
-  padding-left: 40px; 
+  padding-left: 25px; 
   padding-right: 40px;
 }
 
