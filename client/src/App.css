@@ -67,6 +67,7 @@
   background-color: #40414f;
   width: 90%;
   padding: 14px;
+  line-height: 1.3em; 
   color: white;
   border-radius: 5px;
   border: none;
@@ -115,6 +116,7 @@
 
 .message
 {
+  max-height: max-content;
   padding-left: 25px; 
   padding-right: 40px;
 }
