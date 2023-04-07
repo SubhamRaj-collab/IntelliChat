@@ -1,11 +1,17 @@
 import './App.css';
 import './normalize.css';
 import ChatMessage from './Components/ChatMessage';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
 
-  const [input, setInput] = useState("")
+  useEffect(() => {
+    getEngines();
+  }, [])
+  
+  const [input, setInput] = useState("");
+  const [models, setModels] = useState([]);
+  const [currentModel, setCurrentModel] = useState("text-davinci-003");
   const [chatLog, setChatLog] = useState([
     {
       user: "me",
@@ -19,6 +25,15 @@ function App() {
 
   const clearChat = () => {
     setChatLog([]);
+  }
+
+  const getEngines = () => {
+    fetch("http://localhost:3080/models")
+    .then(res => res.json())
+    .then(data => {
+      console.log(data.models.data)
+      setModels(data.models)
+    })
   }
 
   const handleSubmit = async (e) => {
@@ -35,7 +50,8 @@ function App() {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        message: messages
+        message: messages,
+        currentModel: currentModel,
       })
     });
 
@@ -51,6 +67,14 @@ function App() {
         <div className="sideMenuButton" onClick={clearChat}>
           <span>+</span>
           New Chat
+        </div>
+        <div className="models">
+          <select className = "options" onChange={(e)=>{setCurrentModel(e.target.value)}}>
+            {models.map((model, index) => (
+                <option key={model.id} value={model.id}>{model.id}
+                </option>
+            ))}
+          </select>
         </div>
       </aside>
       
