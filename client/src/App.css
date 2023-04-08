@@ -87,13 +87,22 @@
   outline: none;
 }
 
+.chatBox
+{
+  display: flex;
+}
+
 .chat-log
 {
   text-align: left;
+  position: relative;
+  height: 80%;
+  overflow-y: auto;
+  width: 100%;
 }
 
 .message{
-  word-wrap: break-word;  
+  overflow: hidden; 
 }
 
 .chat-message.chatgpt
