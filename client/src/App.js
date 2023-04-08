@@ -31,7 +31,7 @@ function App() {
     fetch("http://localhost:3080/models")
     .then(res => res.json())
     .then(data => {
-      console.log(data.models.data)
+      // console.log(data.models.data)
       setModels(data.models)
     })
   }
